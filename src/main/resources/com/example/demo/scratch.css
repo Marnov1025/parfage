@@ -1,0 +1,81 @@
+#title {
+    -fx-font-family: 'Montserrat';
+    -fx-font-size: 60;
+    -fx-font-weight: bold;
+    -fx-text-fill: #0d3436;
+    -fx-wrap-text: true;
+}
+
+.button {
+    -fx-font-family: 'Montserrat';
+    -fx-font-size: 19;
+    -fx-font-weight: bold;
+    -fx-background-color: #0d3436;
+    -fx-text-fill: white;
+    -fx-cursor: hand;
+}
+
+.text-field {
+    -fx-font-family: 'Montserrat';
+    -fx-font-size: 19;
+    -fx-font-weight: bold;
+
+}
+
+.password-field {
+    -fx-font-family: 'Montserrat';
+    -fx-font-size: 19;
+    -fx-font-weight: bold;
+}
+
+#window {
+    -fx-background-image: url("https://i.pinimg.com/736x/bb/8d/f8/bb8df8ab9efed95b63dc33a536bc6ead.jpg");
+}
+
+#menuBox {
+    -fx-background-color: #0d3436;
+    -fx-pref-width: 1280;
+    -fx-pref-height: 50;
+}
+
+#webview {
+    -fx-fill-width: true;
+    -fx-fill-height: true;
+}
+
+#month_yearLabel {
+    -fx-font-family: 'Montserrat';
+    -fx-font-size: 40;
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+    -fx-background-size: auto;
+}
+
+#calendar {
+    -fx-font-family: 'Montserrat';
+    -fx-font-size: 45;
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+    -fx-background-size: auto;
+    -fx-background-color: #0d3436;
+}
+
+#noteArea {
+    -fx-font-family: 'Montserrat';
+    -fx-font-size: 19;
+    -fx-font-weight: bold;
+    -fx-text-fill: #0d3436;
+}
+
+.label {
+    -fx-font-family: 'Montserrat';
+    -fx-font-size: 19;
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+}
+
+#dayButton {
+    -fx-font-family: 'Montserrat';
+    -fx-font-size: 35;
+    -fx-font-weight: bold;
+}

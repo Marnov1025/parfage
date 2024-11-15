@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane fx:id="window" prefHeight="609.0" prefWidth="968.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.RegistrationFormController">
+   <children>
+      <Pane layoutX="226.0" layoutY="52.0" opacity="0.7" prefHeight="506.0" prefWidth="516.0" style="-fx-background-color: #F4F6FB;">
+         <children>
+            <Label fx:id="title" layoutX="42.0" layoutY="26.0" prefHeight="88.0" prefWidth="432.0" text="Регистрация">
+               <font>
+                  <Font size="60.0" />
+               </font>
+            </Label>
+            <VBox alignment="CENTER" layoutX="114.0" layoutY="105.0" prefHeight="264.0" prefWidth="288.0">
+               <children>
+                  <TextField fx:id="logInReg" promptText="Логин:">
+                     <VBox.margin>
+                        <Insets top="60.0" />
+                     </VBox.margin>
+                     <font>
+                        <Font size="19.0" />
+                     </font>
+                  </TextField>
+                  <TextField fx:id="userNameReg" promptText="Имя пользователя:">
+                     <VBox.margin>
+                        <Insets top="50.0" />
+                     </VBox.margin>
+                     <font>
+                        <Font size="19.0" />
+                     </font>
+                  </TextField>
+                  <PasswordField fx:id="passwordReg" promptText="Пароль:">
+                     <VBox.margin>
+                        <Insets top="50.0" />
+                     </VBox.margin>
+                     <font>
+                        <Font size="19.0" />
+                     </font>
+                  </PasswordField>
+                  <Button mnemonicParsing="false" style="-fx-background-color: #0D3436;" text="Войти" textFill="#f4f6fb">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+
+                     </cursor>
+                     <VBox.margin>
+                        <Insets top="50.0" />
+                     </VBox.margin>
+                     <font>
+                        <Font size="19.0" />
+                     </font>
+                  </Button>
+               </children>
+            </VBox>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

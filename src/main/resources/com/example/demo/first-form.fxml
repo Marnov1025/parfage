@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.Button?>
+
+<AnchorPane fx:id="window" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="609.0" prefWidth="968.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.FirstFormController">
+   <children>
+      <Pane layoutX="226.0" layoutY="78.0" opacity="0.7" prefHeight="453.0" prefWidth="516.0" style="-fx-background-color: #F4F6FB;">
+         <children>
+            <Button fx:id="Autorisation" alignment="CENTER" layoutX="150.0" layoutY="227.0" mnemonicParsing="false" onMouseClicked="#autorisation" prefHeight="49.0" prefWidth="217.0" style="-fx-background-color: #0d3436;" text="Авторизация" textFill="WHITE">
+               <font>
+                  <Font name="Ebrima Bold" size="19.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button fx:id="Registration" alignment="CENTER" layoutX="150.0" layoutY="330.0" mnemonicParsing="false" onMouseClicked="#registration" prefHeight="49.0" prefWidth="217.0" style="-fx-background-color: #0d3436;" text="Регистрация" textFill="WHITE">
+               <font>
+                  <Font name="Ebrima Bold" size="19.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Label fx:id="title" alignment="CENTER" layoutX="108.0" layoutY="42.0" onMouseClicked="#autorisation" prefHeight="97.0" prefWidth="301.0" text="Парфаж">
+               <font>
+                  <Font name="Corbel Bold" size="60.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>
