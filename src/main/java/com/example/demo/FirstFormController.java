@@ -1,6 +1,8 @@
 package com.example.demo;
 
+import java.io.IOException;
 import java.net.URL;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
 import javafx.event.ActionEvent;
@@ -39,47 +41,36 @@ public class FirstFormController {
 
     @FXML
     void initialize() {
-        assert Registration != null : "fx:id=\"Registration\" was not injected: check your FXML file 'first-form.fxml'.";
-        assert Autorisation != null : "fx:id=\"Autorisation\" was not injected: check your FXML file 'first-form.fxml'.";
-        assert window != null : "fx:id=\"window\" was not injected: check your FXML file 'first-form.fxml'.";
-        assert title != null : "fx:id=\"title\" was not injected: check your FXML file 'first-form.fxml'.";
+        Autorisation.setOnAction(event -> {
+            Autorisation.getScene().getWindow().hide();
+
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("autorisation-form.fxml"));
+
+            form_create(loader);
+        });
+
+        Registration.setOnAction(event -> {
+            Registration.getScene().getWindow().hide();
+
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("registration-form.fxml"));
+
+            form_create(loader);
+        });
     }
 
-    public void autorisation(MouseEvent mouseEvent){
+    private void form_create(FXMLLoader loader) {
         try {
-            // Загружаем новую форму из FXML файла
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("autorisation-form.fxml"));
-            Parent autorisationForm = loader.load();
-            autorisationForm.getStylesheets().addAll(this.getClass().getResource("scratch.css").toExternalForm());
-
-            // Создаем новое окно
-            Stage autorisationStage = new Stage();
-            autorisationStage.setTitle("Авторизация");
-            autorisationStage.initModality(Modality.WINDOW_MODAL); // Модальное окно
-            autorisationStage.setScene(new Scene(autorisationForm, 968, 609));
-
-            // Показываем новое окно
-            autorisationStage.show();
-        } catch (Exception e) {
-            e.printStackTrace();
+            loader.load();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
-    }
 
-    public void registration(MouseEvent mouseEvent) {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("registration-form.fxml"));
-            Parent registrationForm = loader.load();
-            registrationForm.getStylesheets().addAll(this.getClass().getResource("scratch.css").toExternalForm());
-
-            Stage registrationStage = new Stage();
-            registrationStage.setTitle("Регистрация");
-            registrationStage.initModality(Modality.WINDOW_MODAL);
-            registrationStage.setScene(new Scene(registrationForm, 968, 609));
-
-            registrationStage.show();
-        }
-        catch (Exception e) {
-            e.printStackTrace();
-        }
+        Parent root = loader.getRoot();
+        root.getStylesheets().addAll(Objects.requireNonNull(this.getClass().getResource("scratch.css")).toExternalForm());
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root));
+        stage.showAndWait();
     }
 }

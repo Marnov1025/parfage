@@ -1,14 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.text.*?>
-<?import javafx.geometry.*?>
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="window" prefHeight="609.0" prefWidth="968.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.RegistrationFormController">
+<AnchorPane fx:id="window" prefHeight="609.0" prefWidth="968.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.RegistrationFormController">
    <children>
       <Pane layoutX="226.0" layoutY="52.0" opacity="0.7" prefHeight="506.0" prefWidth="516.0" style="-fx-background-color: #F4F6FB;">
          <children>
@@ -43,7 +46,7 @@
                         <Font size="19.0" />
                      </font>
                   </PasswordField>
-                  <Button mnemonicParsing="false" style="-fx-background-color: #0D3436;" text="Войти" textFill="#f4f6fb">
+                  <Button fx:id="registration" mnemonicParsing="false" style="-fx-background-color: #0D3436;" text="Войти" textFill="#f4f6fb">
                      <cursor>
                         <Cursor fx:constant="HAND" />
 

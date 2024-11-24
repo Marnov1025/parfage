@@ -1,15 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.text.*?>
-<?import javafx.scene.web.*?>
-<?import javafx.geometry.*?>
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.web.WebView?>
 
-<AnchorPane fx:id="window" prefHeight="700.0" prefWidth="1280.0" stylesheets="@scratch.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.MainMenuController">
+<AnchorPane fx:id="window" prefHeight="700.0" prefWidth="1280.0" stylesheets="@scratch.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.MainMenuController">
    <children>
       <HBox fx:id="menuBox" alignment="CENTER" prefHeight="71.0" prefWidth="1386.0">
          <children>
@@ -50,10 +57,12 @@
                      </children>
                   </Pane>
                </children></VBox>
-            <VBox fx:id="tests" managed="false" prefHeight="650.0" prefWidth="1280.0" visible="false">
+            <Pane fx:id="tests" prefHeight="47.0" prefWidth="94.0" visible="false">
                <children>
                   <WebView fx:id="webview" prefHeight="650.0" prefWidth="1280.0" />
-               </children></VBox>
+                  <Button fx:id="update" layoutX="1224.0" layoutY="7.0" mnemonicParsing="false" onMouseClicked="#updateTests" text="↺" />
+               </children>
+            </Pane>
             <VBox fx:id="schedule" prefHeight="650.0" prefWidth="1280.0">
                <children>
                   <Pane prefHeight="650.0" prefWidth="1280.0">
@@ -61,7 +70,7 @@
                         <Button fx:id="prevMonth" layoutX="97.0" layoutY="9.0" mnemonicParsing="false" onMouseClicked="#prevMonthClick" text="&lt;" />
                         <Button fx:id="nextMonth" layoutX="856.0" layoutY="9.0" mnemonicParsing="false" onMouseClicked="#nextMonthClick" text="&gt;" />
                         <Label fx:id="month_yearLabel" layoutX="146.0" layoutY="-3.0" prefHeight="66.0" prefWidth="425.0" text="Label" />
-                        <TextArea fx:id="noteArea" layoutX="896.0" layoutY="60.0" prefHeight="505.0" prefWidth="349.0" />
+                        <TextArea fx:id="noteArea" layoutX="884.0" layoutY="61.0" prefHeight="505.0" prefWidth="336.0" />
                         <GridPane fx:id="calendar" gridLinesVisible="true" layoutX="146.0" layoutY="95.0" prefHeight="532.0" prefWidth="701.0">
                           <rowConstraints>
                             <RowConstraints />
@@ -120,8 +129,8 @@
                               </Label>
                            </children>
                         </HBox>
-                        <Button fx:id="saveButton" layoutX="896.0" layoutY="585.0" mnemonicParsing="false" onMouseClicked="#saveButtonClick" prefHeight="42.0" prefWidth="142.0" text="Сохранить" />
-                        <Button fx:id="deleteButton" layoutX="1103.0" layoutY="585.0" mnemonicParsing="false" onMouseClicked="#deleteButtonClick" prefHeight="42.0" prefWidth="142.0" text="Удалить" />
+                        <Button fx:id="saveButton" layoutX="884.0" layoutY="585.0" mnemonicParsing="false" onMouseClicked="#saveButtonClick" prefHeight="42.0" prefWidth="142.0" text="Сохранить" />
+                        <Button fx:id="deleteButton" layoutX="1077.0" layoutY="585.0" mnemonicParsing="false" onMouseClicked="#deleteButtonClick" prefHeight="42.0" prefWidth="142.0" text="Удалить" />
                      </children>
                   </Pane>
                </children></VBox>

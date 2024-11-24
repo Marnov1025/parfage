@@ -11,8 +11,8 @@ import java.io.IOException;
 public class HelloApplication extends Application {
     @Override
     public void start(Stage primaryStage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("main-menu-form.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 1280, 700);
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("first-form.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(), 968, 609);
         scene.getStylesheets().addAll(this.getClass().getResource("scratch.css").toExternalForm());
 
         primaryStage.setTitle("Парфаж");

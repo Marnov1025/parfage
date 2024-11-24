@@ -1,5 +1,5 @@
 #title {
-    -fx-font-family: 'Montserrat';
+    -fx-font-family: "Montserrat Black";
     -fx-font-size: 60;
     -fx-font-weight: bold;
     -fx-text-fill: #0d3436;
@@ -7,7 +7,7 @@
 }
 
 .button {
-    -fx-font-family: 'Montserrat';
+    -fx-font-family: "Montserrat Black";
     -fx-font-size: 19;
     -fx-font-weight: bold;
     -fx-background-color: #0d3436;
@@ -16,14 +16,14 @@
 }
 
 .text-field {
-    -fx-font-family: 'Montserrat';
+    -fx-font-family: "Montserrat Black";
     -fx-font-size: 19;
     -fx-font-weight: bold;
 
 }
 
 .password-field {
-    -fx-font-family: 'Montserrat';
+    -fx-font-family: "Montserrat Black";
     -fx-font-size: 19;
     -fx-font-weight: bold;
 }
@@ -36,6 +36,7 @@
     -fx-background-color: #0d3436;
     -fx-pref-width: 1280;
     -fx-pref-height: 50;
+    -fx-font-family: "Montserrat Black";
 }
 
 #webview {
@@ -44,7 +45,7 @@
 }
 
 #month_yearLabel {
-    -fx-font-family: 'Montserrat';
+    -fx-font-family: "Montserrat Black";
     -fx-font-size: 40;
     -fx-font-weight: bold;
     -fx-text-fill: white;
@@ -52,7 +53,7 @@
 }
 
 #calendar {
-    -fx-font-family: 'Montserrat';
+    -fx-font-family: "Montserrat Black";
     -fx-font-size: 45;
     -fx-font-weight: bold;
     -fx-text-fill: white;
@@ -61,21 +62,21 @@
 }
 
 #noteArea {
-    -fx-font-family: 'Montserrat';
+    -fx-font-family: "Montserrat Black";
     -fx-font-size: 19;
     -fx-font-weight: bold;
     -fx-text-fill: #0d3436;
 }
 
 .label {
-    -fx-font-family: 'Montserrat';
+    -fx-font-family: "Montserrat Black";
     -fx-font-size: 19;
     -fx-font-weight: bold;
     -fx-text-fill: white;
 }
 
 #dayButton {
-    -fx-font-family: 'Montserrat';
+    -fx-font-family: "Montserrat Black";
     -fx-font-size: 35;
     -fx-font-weight: bold;
 }

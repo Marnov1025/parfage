@@ -3,7 +3,7 @@ package com.example.demo;
 import java.io.*;
 import java.net.URL;
 import java.time.LocalDate;
-import java.time.format.TextStyle;
+
 import java.util.*;
 
 import com.example.demo.models.Note;
@@ -50,10 +50,13 @@ public class MainMenuController {
     private WebView webview;
 
     @FXML
-    private VBox tests;
+    private Pane tests;
 
     @FXML
     private HBox menuBox;
+
+    @FXML
+    private Button update;
 
     @FXML
     private VBox chats;
@@ -111,7 +114,7 @@ public class MainMenuController {
 
     //Расписание
     private void updateLabel() {
-        month_yearLabel.setText(currentDate.getMonth().getDisplayName(TextStyle.FULL, Locale.ENGLISH) + " | " + currentDate.getYear());
+        month_yearLabel.setText(currentDate.getMonth().toString() + " | " + currentDate.getYear());
     }
 
     private int _day;
@@ -169,6 +172,11 @@ public class MainMenuController {
         } catch(IOException e) {
             noteArea.clear();
         }
+    }
+
+    @FXML
+    private void updateTests(MouseEvent event) {
+        testsClick(event);
     }
 
     protected int dayGap;
