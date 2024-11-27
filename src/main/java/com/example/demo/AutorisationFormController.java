@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
+import com.example.demo.models.WindowSwitch;
 import com.example.demo.models.animations.Shake;
 import com.example.demo.models.database.DBHandler;
 import com.example.demo.models.database.User;
@@ -21,6 +22,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import com.example.demo.models.WindowSwitch;
 
 public class AutorisationFormController {
 
@@ -46,12 +48,34 @@ public class AutorisationFormController {
     private TextField loginField;
 
     @FXML
+    private Button rewindButton;
+
+    @FXML
     void asd(ActionEvent event) {
 
     }
 
     @FXML
     void initialize() {
+        rewindButton.setOnAction(event -> {
+            rewindButton.getScene().getWindow().hide();
+
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("first-form.fxml"));
+
+            try {
+                loader.load();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+
+            Parent root = loader.getRoot();
+            root.getStylesheets().addAll(Objects.requireNonNull(this.getClass().getResource("scratch.css")).toExternalForm());
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.showAndWait();
+        });
+
         logIn.setOnAction(event -> {
             String loginText = loginField.getText().trim();
             String passwordText = passwordField.getText().trim();
@@ -74,7 +98,7 @@ public class AutorisationFormController {
     private void loginUser(String loginText, String passwordText) throws SQLException {
         DBHandler dbHandler = new DBHandler();
         User user = new User();
-        user.setLogin(loginText);
+        user.setUsername(loginText);
         user.setPassword(passwordText);
         ResultSet result = dbHandler.getUser(user);
 

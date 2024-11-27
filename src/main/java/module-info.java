@@ -4,7 +4,6 @@ module com.example.demo {
     requires javafx.web;
     requires com.google.gson;
     requires java.sql;
-    requires mysql.connector.j;
     exports com.example.demo.models;
 
 

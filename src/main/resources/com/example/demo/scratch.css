@@ -44,13 +44,15 @@
     -fx-fill-height: true;
 }
 
-#month_yearLabel {
+#month_label, #year_label {
     -fx-font-family: "Montserrat Black";
-    -fx-font-size: 40;
+    -fx-font-size: 35;
     -fx-font-weight: bold;
     -fx-text-fill: white;
     -fx-background-size: auto;
 }
+
+
 
 #calendar {
     -fx-font-family: "Montserrat Black";
@@ -79,4 +81,9 @@
     -fx-font-family: "Montserrat Black";
     -fx-font-size: 35;
     -fx-font-weight: bold;
+}
+
+#logOut {
+    -fx-text-fill: #0d3436;
+    -fx-background-color: white;
 }
