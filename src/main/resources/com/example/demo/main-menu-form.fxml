@@ -14,6 +14,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 <?import javafx.scene.web.WebView?>
 
 <AnchorPane fx:id="window" prefHeight="700.0" prefWidth="1280.0" stylesheets="@scratch.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.MainMenuController">
@@ -40,6 +41,11 @@
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
+            </Button>
+            <Button fx:id="logOut" mnemonicParsing="false" prefHeight="36.0" prefWidth="235.0" text="Выйти из аккаунта">
+               <HBox.margin>
+                  <Insets left="500.0" />
+               </HBox.margin>
             </Button>
          </children>
       </HBox>
@@ -69,7 +75,10 @@
                      <children>
                         <Button fx:id="prevMonth" layoutX="97.0" layoutY="9.0" mnemonicParsing="false" onMouseClicked="#prevMonthClick" text="&lt;" />
                         <Button fx:id="nextMonth" layoutX="856.0" layoutY="9.0" mnemonicParsing="false" onMouseClicked="#nextMonthClick" text="&gt;" />
-                        <Label fx:id="month_yearLabel" layoutX="146.0" layoutY="-3.0" prefHeight="66.0" prefWidth="425.0" text="Label" />
+                        <Label fx:id="month_label" layoutX="146.0" layoutY="-3.0" prefHeight="66.0" prefWidth="251.0" text="Label">
+                           <font>
+                              <Font size="1.0" />
+                           </font></Label>
                         <TextArea fx:id="noteArea" layoutX="884.0" layoutY="61.0" prefHeight="505.0" prefWidth="336.0" />
                         <GridPane fx:id="calendar" gridLinesVisible="true" layoutX="146.0" layoutY="95.0" prefHeight="532.0" prefWidth="701.0">
                           <rowConstraints>
@@ -131,6 +140,7 @@
                         </HBox>
                         <Button fx:id="saveButton" layoutX="884.0" layoutY="585.0" mnemonicParsing="false" onMouseClicked="#saveButtonClick" prefHeight="42.0" prefWidth="142.0" text="Сохранить" />
                         <Button fx:id="deleteButton" layoutX="1077.0" layoutY="585.0" mnemonicParsing="false" onMouseClicked="#deleteButtonClick" prefHeight="42.0" prefWidth="142.0" text="Удалить" />
+                        <Label fx:id="year_label" layoutX="665.0" layoutY="5.0" prefHeight="50.0" prefWidth="182.0" text="Label" />
                      </children>
                   </Pane>
                </children></VBox>

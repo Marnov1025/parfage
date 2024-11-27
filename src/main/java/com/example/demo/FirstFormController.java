@@ -71,6 +71,6 @@ public class FirstFormController {
         root.getStylesheets().addAll(Objects.requireNonNull(this.getClass().getResource("scratch.css")).toExternalForm());
         Stage stage = new Stage();
         stage.setScene(new Scene(root));
-        stage.showAndWait();
+        stage.show();
     }
 }

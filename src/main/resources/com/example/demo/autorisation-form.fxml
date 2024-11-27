@@ -1,18 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
-<?import javafx.scene.text.*?>
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="window" prefHeight="609.0" prefWidth="968.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.AutorisationFormController">
+<AnchorPane fx:id="window" prefHeight="609.0" prefWidth="968.0" stylesheets="@scratch.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.AutorisationFormController">
    <children>
       <Pane layoutX="226.0" layoutY="78.0" opacity="0.7" prefHeight="453.0" prefWidth="516.0" style="-fx-background-color: #F4F6FB;">
          <children>
-            <VBox alignment="CENTER" layoutX="114.0" layoutY="142.0" prefHeight="264.0" prefWidth="288.0">
+            <VBox alignment="CENTER" layoutX="114.0" layoutY="115.0" prefHeight="264.0" prefWidth="288.0">
                <children>
                   <TextField fx:id="loginField" prefHeight="30.0" prefWidth="288.0" promptText="Логин:">
                      <VBox.margin>
@@ -43,12 +46,13 @@
                   </Button>
                </children>
             </VBox>
-            <Label fx:id="title" layoutX="41.0" layoutY="38.0" prefHeight="78.0" prefWidth="434.0" text="Авторизация" textFill="#0d3436">
+            <Label fx:id="title" layoutX="34.0" layoutY="37.0" prefHeight="78.0" prefWidth="449.0" text="Авторизация" textFill="#0d3436">
                <font>
                   <Font name="Ebrima Bold" size="60.0" />
                </font>
             </Label>
          </children>
       </Pane>
+      <Button fx:id="rewindButton" layoutX="439.0" layoutY="559.0" mnemonicParsing="false" text="Назад" />
    </children>
 </AnchorPane>

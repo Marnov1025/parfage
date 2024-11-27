@@ -10,7 +10,6 @@ import com.example.demo.models.Note;
 import com.google.gson.Gson;
 
 import com.google.gson.GsonBuilder;
-import com.google.gson.stream.JsonReader;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.*;
@@ -21,15 +20,14 @@ import javafx.scene.web.WebView;
 
 public class MainMenuController {
 
-    static class TextData {
-        String text;
 
-        TextData(String text) {
-            this.text = text;
-        }
-    }
+    //Инициализация элементов
 
     private LocalDate currentDate;
+
+
+    @FXML
+    private Button logOut;
 
     @FXML
     private Button deleteButton;
@@ -65,7 +63,10 @@ public class MainMenuController {
     private AnchorPane window;
 
     @FXML
-    private Label month_yearLabel;
+    private Label month_label;
+
+    @FXML
+    private Label year_label;
 
     @FXML
     private GridPane calendar;
@@ -81,7 +82,7 @@ public class MainMenuController {
 
     @FXML
     private Button saveButton;
-
+    //Инициализация элементов
 
 
     @FXML
@@ -90,7 +91,10 @@ public class MainMenuController {
         calendar.setGridLinesVisible(true);
         drawCalendar(currentDate.withDayOfMonth(1).getDayOfWeek().getValue());
         updateLabel();
+        selectDate(currentDate.getDayOfMonth());
+        today(currentDate.getDayOfMonth(), _day);
     }
+
 
     //Верхние кнопки
     private void toggleVBox(int vbox) {
@@ -112,9 +116,12 @@ public class MainMenuController {
     }
     //Верхние кнопки
 
+
     //Расписание
+
     private void updateLabel() {
-        month_yearLabel.setText(currentDate.getMonth().toString() + " | " + currentDate.getYear());
+        month_label.setText(currentDate.getMonth().toString());
+        year_label.setText(String.valueOf(currentDate.getYear()));
     }
 
     private int _day;
@@ -133,13 +140,30 @@ public class MainMenuController {
             dayButton.setOnMouseClicked(e -> selectDate(finalI));
             dayButton.setStyle("-fx-alignment: center;");
             dayButton.setStyle("-fx-font-size: 35");
-            noteCheck(dayButton, finalI);
+            dates_load(dayButton, finalI);
             calendar.add(dayButton, column, row);
+            today(currentDate.getDayOfMonth(), finalI);
         }
+
+
 
     }
 
-    public void noteCheck(Button button, int day) {
+    protected void today(int day, int value) {
+        if (String.valueOf(value).equals(currentDate.getDayOfMonth()) && month_label.getText().equals(currentDate.getMonth().toString())) {
+            calendar.getChildren().get(day-1).setStyle(
+                    "-fx-text-fill: white;" +
+                            "-fx-font-size: 25;" +
+                            "-fx-background-color: #0d3436;" +
+                            "-fx-border-radius: 100;" +
+                            "-fx-border-color: white;" +
+                            "-fx-border-width: 5");
+        }
+
+
+    }
+
+    public void dates_load(Button button, int day) {
         LocalDate selectedDate = currentDate.withDayOfMonth(day);
         File file = new File("src/main/resources/static/" + selectedDate + ".json");
         if(file.exists()) {
@@ -250,6 +274,7 @@ public class MainMenuController {
         alert.showAndWait();
     }
     //Расписание
+
 
     //Чат
 

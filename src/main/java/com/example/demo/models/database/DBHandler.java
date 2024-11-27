@@ -39,11 +39,11 @@ public class DBHandler extends Configs{
 
     public ResultSet getUser(User user) {
         ResultSet resSet = null;
-        String select = "SELECT * FROM " + Const.USER_TABLE + " WHERE " + Const.USERS_LOGIN + "=? AND " + Const.USERS_PASSWORD + "=?";
+        String select = "SELECT * FROM " + Const.USER_TABLE + " WHERE " + Const.USERS_NAME + "=? AND " + Const.USERS_PASSWORD + "=?";
 
         try {
             PreparedStatement prst = getDbConnection().prepareStatement(select);
-            prst.setString(1, user.getLogin());
+            prst.setString(1, user.getUsername());
             prst.setString(2, user.getPassword());
 
             resSet = prst.executeQuery();
