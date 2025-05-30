@@ -95,7 +95,7 @@ public class AutorisationFormController {
 
     }
 
-    private void loginUser(String loginText, String passwordText) throws SQLException {
+    protected void loginUser(String loginText, String passwordText) throws SQLException {
         DBHandler dbHandler = new DBHandler();
         User user = new User();
         user.setUsername(loginText);
@@ -111,20 +111,8 @@ public class AutorisationFormController {
         if (counter >= 1) {
             logIn.getScene().getWindow().hide();
 
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("main-menu-form.fxml"));
-
-            try {
-                loader.load();
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-
-            Parent root = loader.getRoot();
-            root.getStylesheets().addAll(Objects.requireNonNull(this.getClass().getResource("scratch.css")).toExternalForm());
-            Stage stage = new Stage();
-            stage.setScene(new Scene(root));
-            stage.show();
+            WindowSwitch ws = new WindowSwitch();
+            ws.main_menu();
         }
         else {
             Shake userLoginAnim = new Shake(loginField);

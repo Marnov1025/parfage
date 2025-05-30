@@ -1,10 +1,9 @@
 package com.example.demo;
 
 import java.io.IOException;
-import java.net.URL;
 import java.util.Objects;
-import java.util.ResourceBundle;
 
+import com.example.demo.models.WindowSwitch;
 import com.example.demo.models.database.DBHandler;
 import com.example.demo.models.database.User;
 import javafx.event.ActionEvent;
@@ -18,8 +17,9 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import javafx.stage.Window;
 
-public class RegistrationFormController {
+public class RegistrationFormController extends AutorisationFormController {
 
     public Button registration;
 
@@ -70,13 +70,13 @@ public class RegistrationFormController {
 
         registration.setOnAction(event -> {
 
-            loginNewUser();
+            regNewUser();
 
         });
 
     }
 
-    private void loginNewUser() {
+    private void regNewUser() {
         DBHandler handler = new DBHandler();
 
         String username = userNameReg.getText();
@@ -86,7 +86,10 @@ public class RegistrationFormController {
         User user = new User(login, password, username);
 
         handler.regUser(user);
+
+        registration.getScene().getWindow().hide();
+
+        WindowSwitch ws = new WindowSwitch();
+        ws.main_menu();
     }
-
-
 }
