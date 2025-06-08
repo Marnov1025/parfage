@@ -7,6 +7,7 @@ import java.time.LocalDate;
 import java.util.*;
 
 import com.example.demo.models.Note;
+import com.example.demo.models.WindowManager;
 import com.google.gson.Gson;
 
 import com.google.gson.GsonBuilder;
@@ -84,6 +85,10 @@ public class MainMenuController {
     private Button saveButton;
     //Инициализация элементов
 
+    protected static final String fxmlPath = "/main-menu-form.fxml";
+    protected final static int fxmlWidth = 1280;
+    protected final static int fxmlHeight = 700;
+
 
     @FXML
     void initialize() {
@@ -113,6 +118,13 @@ public class MainMenuController {
     public void testsClick(MouseEvent event) {
         toggleVBox(2);
         webview.getEngine().load("https://www.pdd24.com/for-school");
+    }
+
+    public void logOutClick(MouseEvent event) {
+        logOut.getScene().getWindow().hide();
+
+        WindowManager ws = new WindowManager();
+        ws.window_switch(FirstFormController.fxmlPath, FirstFormController.fxmlHeight, FirstFormController.fxmlWidth);
     }
     //Верхние кнопки
 

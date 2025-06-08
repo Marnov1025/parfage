@@ -42,7 +42,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Button fx:id="logOut" mnemonicParsing="false" prefHeight="36.0" prefWidth="235.0" text="Выйти из аккаунта">
+            <Button fx:id="logOut" mnemonicParsing="false" onMouseClicked="#logOutClick" prefHeight="36.0" prefWidth="235.0" text="Выйти из аккаунта">
                <HBox.margin>
                   <Insets left="500.0" />
                </HBox.margin>

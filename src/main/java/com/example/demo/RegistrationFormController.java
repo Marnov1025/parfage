@@ -3,7 +3,7 @@ package com.example.demo;
 import java.io.IOException;
 import java.util.Objects;
 
-import com.example.demo.models.WindowSwitch;
+import com.example.demo.models.WindowManager;
 import com.example.demo.models.database.DBHandler;
 import com.example.demo.models.database.User;
 import javafx.event.ActionEvent;
@@ -17,7 +17,6 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import javafx.stage.Window;
 
 public class RegistrationFormController extends AutorisationFormController {
 
@@ -46,26 +45,18 @@ public class RegistrationFormController extends AutorisationFormController {
 
     }
 
+    protected final static String fxmlPath = "/registration-form.fxml";
+    protected final static int fxmlHeight = 609;
+    protected final static int fxmlWidth = 968;
+
     @FXML
     void initialize() {
 
         rewindButton.setOnAction(event -> {
             rewindButton.getScene().getWindow().hide();
 
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("first-form.fxml"));
-
-            try {
-                loader.load();
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-
-            Parent root = loader.getRoot();
-            root.getStylesheets().addAll(Objects.requireNonNull(this.getClass().getResource("scratch.css")).toExternalForm());
-            Stage stage = new Stage();
-            stage.setScene(new Scene(root));
-            stage.showAndWait();
+            WindowManager ws = new WindowManager();
+            ws.window_switch(FirstFormController.fxmlPath, FirstFormController.fxmlHeight, FirstFormController.fxmlWidth);
         });
 
         registration.setOnAction(event -> {
@@ -89,7 +80,7 @@ public class RegistrationFormController extends AutorisationFormController {
 
         registration.getScene().getWindow().hide();
 
-        WindowSwitch ws = new WindowSwitch();
-        ws.main_menu();
+        WindowManager ws = new WindowManager();
+        ws.window_switch(fxmlPath, fxmlHeight, fxmlWidth);
     }
 }

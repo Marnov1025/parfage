@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
-import com.example.demo.models.WindowSwitch;
+import com.example.demo.models.WindowManager;
 import com.example.demo.models.animations.Shake;
 import com.example.demo.models.database.DBHandler;
 import com.example.demo.models.database.User;
@@ -22,7 +22,6 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import com.example.demo.models.WindowSwitch;
 
 public class AutorisationFormController {
 
@@ -55,25 +54,18 @@ public class AutorisationFormController {
 
     }
 
+    protected final static String fxmlPath = "/authorisation-form.fxml";
+
+    protected final static int fxmlHeight = 609;
+    protected final static int fxmlWidth = 968;
+
     @FXML
     void initialize() {
         rewindButton.setOnAction(event -> {
             rewindButton.getScene().getWindow().hide();
 
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("first-form.fxml"));
-
-            try {
-                loader.load();
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-
-            Parent root = loader.getRoot();
-            root.getStylesheets().addAll(Objects.requireNonNull(this.getClass().getResource("scratch.css")).toExternalForm());
-            Stage stage = new Stage();
-            stage.setScene(new Scene(root));
-            stage.showAndWait();
+            WindowManager ws = new WindowManager();
+            ws.window_switch(FirstFormController.fxmlPath, FirstFormController.fxmlHeight, FirstFormController.fxmlWidth);
         });
 
         logIn.setOnAction(event -> {
@@ -111,20 +103,8 @@ public class AutorisationFormController {
         if (counter >= 1) {
             logIn.getScene().getWindow().hide();
 
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("main-menu-form.fxml"));
-
-            try {
-                loader.load();
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-
-            Parent root = loader.getRoot();
-            root.getStylesheets().addAll(Objects.requireNonNull(this.getClass().getResource("scratch.css")).toExternalForm());
-            Stage stage = new Stage();
-            stage.setScene(new Scene(root));
-            stage.show();
+            WindowManager ws = new WindowManager();
+            ws.window_switch(MainMenuController.fxmlPath, MainMenuController.fxmlHeight, MainMenuController.fxmlWidth);
         }
         else {
             Shake userLoginAnim = new Shake(loginField);
