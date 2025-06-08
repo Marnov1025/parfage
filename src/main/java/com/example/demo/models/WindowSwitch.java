@@ -16,19 +16,6 @@ public class WindowSwitch {
     String welcome = "first-form";
 
     public void main_menu() {
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("main-menu-form.fxml"));
 
-        try {
-            loader.load();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-
-        Parent root = loader.getRoot();
-        root.getStylesheets().addAll(Objects.requireNonNull(this.getClass().getResource("scratch.css")).toExternalForm());
-        Stage stage = new Stage();
-        stage.setScene(new Scene(root));
-        stage.show();
     }
 }

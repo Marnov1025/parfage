@@ -4,6 +4,7 @@ module com.example.demo {
     requires javafx.web;
     requires com.google.gson;
     requires java.sql;
+    requires java.desktop;
     exports com.example.demo.models;
 
 
