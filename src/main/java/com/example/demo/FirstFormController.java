@@ -6,7 +6,6 @@ import java.util.Objects;
 import java.util.ResourceBundle;
 
 import com.example.demo.models.WindowManager;
-import javafx.application.Application;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -47,7 +46,7 @@ public class FirstFormController {
             Autorisation.getScene().getWindow().hide();
 
             WindowManager ws = new WindowManager();
-            ws.window_switch(AutorisationFormController.fxmlPath, AutorisationFormController.fxmlHeight, AutorisationFormController.fxmlWidth);
+            ws.window_switch(AuthorisationFormController.fxmlPath, AuthorisationFormController.fxmlHeight, AuthorisationFormController.fxmlWidth);
         });
 
         Registration.setOnAction(event -> {

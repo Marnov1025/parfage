@@ -82,25 +82,33 @@ public class MainMenuController {
     @FXML
     void initialize() {
         currentDate = LocalDate.now();
-        Map<String, String> dictionary = new HashMap<>(12);
-        dictionary.put("January", "Январь");
-        dictionary.put("February", "Февраль");
-        dictionary.put("March", "Март");
-        dictionary.put("April", "Апрель");
-        dictionary.put("May", "Май");
-        dictionary.put("June", "Июнь");
-        dictionary.put("July", "Июль");
-        dictionary.put("August", "Август");
-        dictionary.put("September", "Сентябрь");
-        dictionary.put("October", "Октябрь");
-        dictionary.put("November", "Ноябрь");
-        dictionary.put("December", "Декабрь");
 
         calendar.setGridLinesVisible(true);
         drawCalendar(currentDate.withDayOfMonth(1).getDayOfWeek().getValue());
         updateLabel();
         selectDate(currentDate.getDayOfMonth());
         today(currentDate.getDayOfMonth(), _day);
+
+    }
+
+    private void translate() {
+        Map<String, String> dictionary = new HashMap<>(12);
+        dictionary.put("January".toUpperCase(), "Январь");
+        dictionary.put("February".toUpperCase(), "Февраль");
+        dictionary.put("March".toUpperCase(), "Март");
+        dictionary.put("April".toUpperCase(), "Апрель");
+        dictionary.put("May".toUpperCase(), "Май");
+        dictionary.put("June".toUpperCase(), "Июнь");
+        dictionary.put("July".toUpperCase(), "Июль");
+        dictionary.put("August".toUpperCase(), "Август");
+        dictionary.put("September".toUpperCase(), "Сентябрь");
+        dictionary.put("October".toUpperCase(), "Октябрь");
+        dictionary.put("November".toUpperCase(), "Ноябрь");
+        dictionary.put("December".toUpperCase(), "Декабрь");
+
+        String eng = month_label.getText();
+        String rus = dictionary.getOrDefault(eng, "Месяц");
+        month_label.setText(rus);
     }
 
 
@@ -141,17 +149,11 @@ public class MainMenuController {
 
             HBox answerBox = getHBox(t);
 
-// Добавляем в него Label с текстом вопроса
             test1.getChildren().add(testTextLabel);
-
-// Добавляем HBox с тремя кнопками
             test1.getChildren().add(answerBox);
-
-// Добавляем весь блок в основной VBox (tests)
             tests.getChildren().add(test1);
         }
     }
-
     private HBox getHBox(Test t) {
         Button btnCorrect = new Button(t.getCorrect());
         Button btnWrong1 = new Button(t.getWrong1());
@@ -216,9 +218,7 @@ public class MainMenuController {
             calendar.add(dayButton, column, row);
             today(currentDate.getDayOfMonth(), finalI);
         }
-
-
-
+        translate();
     }
 
     protected void today(int day, int value) {
@@ -346,9 +346,4 @@ public class MainMenuController {
         alert.showAndWait();
     }
     //Расписание
-
-
-    //Чат
-
-    //Чат
 }

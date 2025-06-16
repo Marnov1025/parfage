@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="window" prefHeight="609.0" prefWidth="968.0" stylesheets="@scratch.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.AutorisationFormController">
+<AnchorPane fx:id="window" prefHeight="609.0" prefWidth="968.0" stylesheets="@scratch.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.AuthorisationFormController">
    <children>
       <Pane layoutX="226.0" layoutY="78.0" opacity="0.7" prefHeight="453.0" prefWidth="516.0" style="-fx-background-color: #F4F6FB;">
          <children>
