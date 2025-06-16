@@ -12,8 +12,6 @@ import java.net.URL;
 public class WindowManager {
 
     private static final String welcome = "/first-form.fxml";
-    private static final String auth = "/authorisation-form.fxml";
-    private static final String main = "/main-menu-form.fxml";
 
 
     public void window_switch(String path, int height, int width) {
