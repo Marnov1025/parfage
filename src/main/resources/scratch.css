@@ -87,3 +87,11 @@
     -fx-text-fill: #0d3436;
     -fx-background-color: white;
 }
+
+#testText {
+    -fx-font-family: "Montserrat Black";
+        -fx-font-size: 24;
+        -fx-font-weight: bold;
+        -fx-text-fill: white;
+    -fx-background-color: #0d3436;
+}

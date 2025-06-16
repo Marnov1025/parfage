@@ -113,8 +113,4 @@ public class AutorisationFormController {
             userPasswordAnim.playAnim();
         }
     }
-
-//    public void openNewScene(String window) {
-//
-//    }
 }

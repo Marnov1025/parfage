@@ -1,9 +1,9 @@
 package com.example.demo.models.database;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
-import java.sql.ResultSet;
+import javax.swing.plaf.nimbus.State;
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
+
 public class DBHandler extends Configs{
     Connection dbConnection;
     public Connection getDbConnection() throws ClassNotFoundException, SQLException{
@@ -39,7 +39,7 @@ public class DBHandler extends Configs{
 
     public ResultSet getUser(User user) {
         ResultSet resSet = null;
-        String select = "SELECT * FROM " + Const.USER_TABLE + " WHERE " + Const.USERS_NAME + "=? AND " + Const.USERS_PASSWORD + "=?";
+        String select = "SELECT * FROM " + Const.USER_TABLE + " WHERE " + Const.USERS_LOGIN + "=? AND " + Const.USERS_PASSWORD + "=?";
 
         try {
             PreparedStatement prst = getDbConnection().prepareStatement(select);
@@ -52,6 +52,29 @@ public class DBHandler extends Configs{
         }
 
         return resSet;
+    }
+
+    public List<Test> loadTestsFromDB() {
+        List<Test> list = new ArrayList<>();
+
+        String querry = "SELECT \"testText\", \"correctAnswer\", \"wrongFirst\", \"wrongSecond\" FROM tests";
+        try(Connection conn = getDbConnection()) {
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery(querry);
+            while(rs.next()) {
+                String testText = rs.getString(Const.TEST_TEXT);
+                String correct = rs.getString(Const.TEST_CORRECT_ANSWER);
+                String wrong1 = rs.getString(Const.WRONG_FIRST);
+                String wrong2 = rs.getString(Const.WRONG_SECOND);
+
+                list.add(new Test(testText, correct, wrong1, wrong2));
+            }
+        }
+        catch (SQLException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        return list;
     }
 
 }

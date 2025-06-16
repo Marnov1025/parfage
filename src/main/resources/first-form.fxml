@@ -27,7 +27,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Label fx:id="title" alignment="CENTER" layoutX="108.0" layoutY="42.0" prefHeight="97.0" prefWidth="301.0" text="Парфаж">
+            <Label fx:id="title" alignment="CENTER" layoutX="63.0" layoutY="28.0" prefHeight="170.0" prefWidth="390.0" text="Автошкола &quot;Парфаж&quot;" textAlignment="CENTER">
                <font>
                   <Font name="Corbel Bold" size="60.0" />
                </font>

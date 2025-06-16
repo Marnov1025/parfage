@@ -5,6 +5,7 @@ module com.example.demo {
     requires com.google.gson;
     requires java.sql;
     requires java.desktop;
+    requires jdk.incubator.vector;
     exports com.example.demo.models;
 
 

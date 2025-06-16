@@ -2,21 +2,28 @@ package com.example.demo;
 
 import java.io.*;
 import java.net.URL;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.time.LocalDate;
 
 import java.util.*;
 
 import com.example.demo.models.Note;
 import com.example.demo.models.WindowManager;
+import com.example.demo.models.database.DBHandler;
+import com.example.demo.models.database.Test;
 import com.google.gson.Gson;
 
 import com.google.gson.GsonBuilder;
 import javafx.fxml.FXML;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.scene.web.WebView;
+import jdk.incubator.vector.VectorOperators;
 
 
 public class MainMenuController {
@@ -24,67 +31,49 @@ public class MainMenuController {
 
     //Инициализация элементов
 
-    private LocalDate currentDate;
 
-
-    @FXML
-    private Button logOut;
-
-    @FXML
-    private Button deleteButton;
-
-    @FXML
-    private ResourceBundle resources;
-
-    @FXML
-    private URL location;
-
-    @FXML
-    private VBox schedule;
-
-    @FXML
-    private ListView<?> dialogView;
-
-    @FXML
-    private WebView webview;
-
-    @FXML
-    private Pane tests;
-
-    @FXML
-    private HBox menuBox;
-
-    @FXML
-    private Button update;
-
-    @FXML
-    private VBox chats;
-
-    @FXML
-    private AnchorPane window;
-
-    @FXML
-    private Label month_label;
-
-    @FXML
-    private Label year_label;
 
     @FXML
     private GridPane calendar;
 
     @FXML
-    private Button nextMonth;
+    private Button deleteButton;
 
     @FXML
-    private Button prevMonth;
+    private Button logOut;
+
+    @FXML
+    private HBox menuBox;
+
+    @FXML
+    private Label month_label;
+
+    @FXML
+    private Button nextMonth;
 
     @FXML
     private TextArea noteArea;
 
     @FXML
-    private Button saveButton;
-    //Инициализация элементов
+    private Button prevMonth;
 
+    @FXML
+    private Button saveButton;
+
+    @FXML
+    private VBox schedule;
+
+    @FXML
+    private VBox tests;
+
+    @FXML
+    private AnchorPane window;
+
+    @FXML
+    private Label year_label;
+
+    //Инициализация элементов
+    private LocalDate currentDate;
     protected static final String fxmlPath = "/main-menu-form.fxml";
     protected final static int fxmlWidth = 1280;
     protected final static int fxmlHeight = 700;
@@ -93,6 +82,20 @@ public class MainMenuController {
     @FXML
     void initialize() {
         currentDate = LocalDate.now();
+        Map<String, String> dictionary = new HashMap<>(12);
+        dictionary.put("January", "Январь");
+        dictionary.put("February", "Февраль");
+        dictionary.put("March", "Март");
+        dictionary.put("April", "Апрель");
+        dictionary.put("May", "Май");
+        dictionary.put("June", "Июнь");
+        dictionary.put("July", "Июль");
+        dictionary.put("August", "Август");
+        dictionary.put("September", "Сентябрь");
+        dictionary.put("October", "Октябрь");
+        dictionary.put("November", "Ноябрь");
+        dictionary.put("December", "Декабрь");
+
         calendar.setGridLinesVisible(true);
         drawCalendar(currentDate.withDayOfMonth(1).getDayOfWeek().getValue());
         updateLabel();
@@ -103,7 +106,7 @@ public class MainMenuController {
 
     //Верхние кнопки
     private void toggleVBox(int vbox) {
-        Node[] views = new Node[] { schedule, chats, tests };
+        Node[] views = new Node[] { schedule, tests };
         for (int i = 0; i < views.length; i++) {
             views[i].setVisible(i == vbox);
             views[i].setManaged(i == vbox);
@@ -115,10 +118,67 @@ public class MainMenuController {
     public void chatsClick(MouseEvent event) {
         toggleVBox(1);
     }
-    public void testsClick(MouseEvent event) {
-        toggleVBox(2);
-        webview.getEngine().load("https://www.pdd24.com/for-school");
+    public void testsClick(MouseEvent event) throws SQLException {
+        toggleVBox(1);
+        tests.getChildren().clear();
+        testsLoad();
     }
+
+
+    public void testsLoad() {
+        DBHandler dbh = new DBHandler();
+        List<Test> testList = dbh.loadTestsFromDB();
+
+        for(Test t: testList) {
+            VBox test1 = new VBox(5);
+            test1.setStyle("-fx-margin-top: 15;");
+            test1.setPadding(new Insets(15));
+            test1.setAlignment(Pos.CENTER);
+            test1.setFillWidth(true);
+
+            Label testTextLabel = new Label(t.getText());
+            testTextLabel.setId("testText");
+
+            HBox answerBox = getHBox(t);
+
+// Добавляем в него Label с текстом вопроса
+            test1.getChildren().add(testTextLabel);
+
+// Добавляем HBox с тремя кнопками
+            test1.getChildren().add(answerBox);
+
+// Добавляем весь блок в основной VBox (tests)
+            tests.getChildren().add(test1);
+        }
+    }
+
+    private HBox getHBox(Test t) {
+        Button btnCorrect = new Button(t.getCorrect());
+        Button btnWrong1 = new Button(t.getWrong1());
+        Button btnWrong2 = new Button(t.getWrong2());
+        btnCorrect.setOnMouseClicked(event -> {
+            btnCorrect.setStyle("-fx-background-color: green");
+            btnWrong1.setStyle("-fx-background-color: #0d3436");
+            btnWrong2.setStyle("-fx-background-color: #0d3436");
+        });
+
+        btnWrong1.setOnMouseClicked(event -> {
+            btnCorrect.setStyle("-fx-background-color: #0d3436");
+            btnWrong1.setStyle("-fx-background-color: red");
+            btnWrong2.setStyle("-fx-background-color: #0d3436");
+        });
+
+        btnWrong2.setOnMouseClicked(event -> {
+            btnCorrect.setStyle("-fx-background-color: #0d3436");
+            btnWrong1.setStyle("-fx-background-color: #0d3436");
+            btnWrong2.setStyle("-fx-background-color: red");
+        });
+
+        HBox answerBox = new HBox(10, btnCorrect, btnWrong1, btnWrong2);
+        answerBox.setAlignment(Pos.CENTER);
+        return answerBox;
+    }
+
 
     public void logOutClick(MouseEvent event) {
         logOut.getScene().getWindow().hide();
@@ -211,7 +271,7 @@ public class MainMenuController {
     }
 
     @FXML
-    private void updateTests(MouseEvent event) {
+    private void updateTests(MouseEvent event) throws SQLException {
         testsClick(event);
     }
 
