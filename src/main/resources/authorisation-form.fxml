@@ -46,7 +46,7 @@
                   </Button>
                </children>
             </VBox>
-            <Label fx:id="title" layoutX="34.0" layoutY="37.0" prefHeight="78.0" prefWidth="449.0" text="Авторизация" textFill="#0d3436">
+            <Label fx:id="title" layoutX="34.0" layoutY="37.0" prefHeight="78.0" prefWidth="449.0" text="Авторизация" textFill="#0d3436" alignment="CENTER">
                <font>
                   <Font name="Ebrima Bold" size="60.0" />
                </font>
