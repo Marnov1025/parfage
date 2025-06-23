@@ -1,8 +1,6 @@
 package com.example.demo;
 
 import java.io.*;
-import java.net.URL;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
 
@@ -22,8 +20,6 @@ import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
-import javafx.scene.web.WebView;
-import jdk.incubator.vector.VectorOperators;
 
 
 public class MainMenuController {
@@ -77,7 +73,7 @@ public class MainMenuController {
     protected static final String fxmlPath = "/main-menu-form.fxml";
     protected final static int fxmlWidth = 1280;
     protected final static int fxmlHeight = 700;
-
+    Map<String, String> dictionary = new HashMap<>(12);
 
     @FXML
     void initialize() {
@@ -88,11 +84,12 @@ public class MainMenuController {
         updateLabel();
         selectDate(currentDate.getDayOfMonth());
         today(currentDate.getDayOfMonth(), _day);
-
+        toggleVBox(0);
+        dictionaryFill();
+        translate();
     }
 
-    private void translate() {
-        Map<String, String> dictionary = new HashMap<>(12);
+    private void dictionaryFill() {
         dictionary.put("January".toUpperCase(), "Январь");
         dictionary.put("February".toUpperCase(), "Февраль");
         dictionary.put("March".toUpperCase(), "Март");
@@ -105,7 +102,9 @@ public class MainMenuController {
         dictionary.put("October".toUpperCase(), "Октябрь");
         dictionary.put("November".toUpperCase(), "Ноябрь");
         dictionary.put("December".toUpperCase(), "Декабрь");
+    }
 
+    public void translate() {
         String eng = month_label.getText();
         String rus = dictionary.getOrDefault(eng, "Месяц");
         month_label.setText(rus);
@@ -122,10 +121,9 @@ public class MainMenuController {
     }
     public void scheduleClick(MouseEvent event) {
         toggleVBox(0);
+        translate();
     }
-    public void chatsClick(MouseEvent event) {
-        toggleVBox(1);
-    }
+
     public void testsClick(MouseEvent event) throws SQLException {
         toggleVBox(1);
         tests.getChildren().clear();
@@ -195,6 +193,7 @@ public class MainMenuController {
 
     private void updateLabel() {
         month_label.setText(currentDate.getMonth().toString());
+        translate();
         year_label.setText(String.valueOf(currentDate.getYear()));
     }
 
@@ -218,7 +217,7 @@ public class MainMenuController {
             calendar.add(dayButton, column, row);
             today(currentDate.getDayOfMonth(), finalI);
         }
-        translate();
+        dictionaryFill();
     }
 
     protected void today(int day, int value) {
